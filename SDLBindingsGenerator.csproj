@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+ <ItemGroup>
+  <Content Remove="Bindings\**" />
+  <Compile Remove="Bindings\**" />
+</ItemGroup>
+
+  <Target Name = "CustomAfterClean" AfterTargets="AfterClean">
+        <RemoveDir Directories="bin" />
+        <RemoveDir Directories="Bindings" />
+        <RemoveDir Directories="obj" />
+        <RemoveDir Directories="SDL" />
+  </Target>
+
+<ItemGroup>
+  <PackageReference Include="CppSharp" Version="1.0.1" />
+  <PackageReference Include="LibGit2Sharp" Version="0.26.2" />
+</ItemGroup>
+
+</Project>
